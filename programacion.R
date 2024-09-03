@@ -4,3 +4,4 @@ library(tidyverse)
 notas <- c(15,17,18,14) %>% 
  +1 %>% 
 mean()
+

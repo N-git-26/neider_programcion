@@ -1,8 +1,13 @@
 ---
 title: "Mi primara pagina web"
 author: "Ramirez Reap Neider"
-format: html
-output-file: index
+format:
+  html:
+    toc: true
+    toc-location: left
+    number-sections: true
+    embed-resources: true
+    output-file: index
 ---
 
 ## Quarto
@@ -48,8 +53,9 @@ ggplot(fb, aes(x = geno, y = lfa, colour = riego)) +
        y = "Valor de la variable respuesta") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  #Inclinar etiquetas del eje x
-``````
+```
 ```{r}
+
 modelo <- aov(formula = hi ~ bloque + riego + geno + riego*geno
               ,data = fb)
 anova(modelo)

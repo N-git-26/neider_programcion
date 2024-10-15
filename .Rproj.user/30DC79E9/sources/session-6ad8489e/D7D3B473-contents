@@ -1,0 +1,12 @@
+saludo <- funcion(x,y)[
+  
+  paste(x,y)
+  
+]
+saludo(x="hola",y="fica")
+saludo("hola","fica")
+
+=A=Pradio*radio*pi
+]
+area_circ("3")
+

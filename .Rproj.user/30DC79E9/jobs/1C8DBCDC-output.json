@@ -1,0 +1,2 @@
+[1,"==> quarto preview mi primera pagina web.qmd --to html --no-watch-inputs --no-browse\n\n"]
+[1,"\r\n\r\nprocessing file: mi-primera-pagina-web.rmarkdown\r\nError: The closing fence on line 59 (\"``````\") in mi-primera-pagina-web.rmarkdown does not match the opening fence \"```\" on line 51. You are recommended to fix either the opening or closing fence of the code chunk to use exactly the same numbers of backticks and same level of indentation (or blockquote). See https://yihui.org/en/2021/10/unbalanced-delimiters/ for more info.\r\nEjecución interrumpida\r\n"]

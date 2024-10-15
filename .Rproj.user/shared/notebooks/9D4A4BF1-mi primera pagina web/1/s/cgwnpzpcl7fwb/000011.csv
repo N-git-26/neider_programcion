@@ -1,0 +1,7 @@
+"0","ggplot(fb, aes(x = geno, y = lfa, colour = riego)) +"
+"0","  geom_boxplot(outlier.colour = ""red"" , outlier.shape = 16, outlier.size = 2) +"
+"0","  labs(title = ""boxplot con interacción de niveles de riego y genotipo"" , "
+"0","       x = ""Interacción Riego y Genotipo"","
+"0","       y = ""Valor de la variable respuesta"") +"
+"0","  theme_minimal() +"
+"0","  theme(axis.text.x = element_text(angle = 45, hjust = 1))  #Inclinar etiquetas del eje x"

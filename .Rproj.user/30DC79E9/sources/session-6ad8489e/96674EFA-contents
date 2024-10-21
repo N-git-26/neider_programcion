@@ -44,7 +44,7 @@ modelo <- aov(formula = lfa ~ bloque + riego + geno + riego*geno
 anova(modelo)
 plot(modelo)
 ```
-# box plot
+### box plot
 ```{r}
 ggplot(fb, aes(x = geno, y = lfa, colour = riego)) +
   geom_boxplot(outlier.colour = "red" , outlier.shape = 16, outlier.size = 2) +
@@ -80,9 +80,11 @@ model <- remove_outliers(
 )
 model
 ```
-
+#comparacion de medias 
+`
+```{r}
+modelo <- aov(formula = lfa ~ bloque + riego + geno + riego*geno
+              ,data = fb)
+anova(modelo)2
 ```
-
-```
-
 

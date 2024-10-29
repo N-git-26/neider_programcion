@@ -31,7 +31,10 @@ You can add options to executable code like this
 
 The `echo: false` option disables the printing of code (only output is displayed).
 ```{r}
+library(TH.data)
 source('https://inkaverse.com/setup.r')
+library(multcomp)
+
 url <- "https://docs.google.com/spreadsheets/d/15r7ZwcZZHbEgltlF6gSFvCTFA-CFzVBWwg3mFlRyKPs/edit?gid=172957346#gid=172957346"
 gs <- url %>% 
   as_sheets_id()
@@ -138,4 +141,77 @@ ggplot(grupos, aes(x = geno, y = lfa, fill = riego)) +  # Asegúrate de que "LFA
   theme(legend.title = element_blank()) +
   scale_fill_discrete(name = "Riego")
 ```
+
+#Analisis multivariado
+
+```{r}
+str(fb)
+```
+
+##coorrelacion
+
+```{r}
+# Cargar librerías necesarias
+library(tidyverse)
+library(corrplot)
+
+# Asegurarse de que 'fb' esté cargado antes de proceder
+# fb <- read.csv("ruta/al/archivo.csv")  # Descomenta y ajusta la ruta si necesitas cargar el archivo
+
+# Filtrar datos para mantener solo columnas numéricas y eliminar filas con NA
+fb_clean <- fb %>%
+  select(where(~ is.numeric(.) && any(!is.na(.)))) %>%  # Selecciona columnas numéricas con al menos un valor no NA
+  drop_na()  # Elimina filas con NA restantes
+
+# Verificar si hay suficientes columnas numéricas para calcular la correlación
+if (ncol(fb_clean) > 1) {
+  # Calcular la matriz de correlación
+  cor_matrix <- cor(fb_clean, use = "complete.obs")
+  
+  # Imprimir la matriz de correlación
+  print(cor_matrix)
+  
+  # Visualizar la matriz de correlación
+  corrplot(cor_matrix, method = "circle")
+} else {
+  cat("No hay suficientes columnas numéricas o datos completos para calcular la correlación.\n")
+}
+```
+```{r}
+
+library(psych)
+library(tidyverse)
+fb %>%
+  select_if(is.numeric)%>%
+  dplyr::select(!c("block"))%>%
+  pairs.panels(x= .
+              , hist.col="red"
+              , pch = 21
+              , stars = TRUE
+              , scale = FALSE
+              , lm = TRUE
+                          )
+```
+
+### PCA: Analisis de componentes principales 
+```{r}
+# Cargar la librería FactoMineR
+library(FactoMineR)
+
+# Realizar el PCA
+mv <- fb %>%
+  PCA(scale.unit = TRUE, quali.sup = c(1:4), graph = FALSE)
+
+# Graficar los individuos
+plot(mv, habillage = 1)
+
+# Graficar las variables
+plot(mv, choix = "var")
+
+# Graficar los individuos nuevamente
+plot(mv, choix = "ind")
+
+```
+
+
 
